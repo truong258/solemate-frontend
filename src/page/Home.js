@@ -270,7 +270,7 @@ const Home = () => {
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const res = await fetch('/products');
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/products`);
         if (!res.ok) throw new Error('Lỗi tải sản phẩm');
         const data = await res.json();
         setProducts(data);

@@ -101,14 +101,14 @@ function Cart() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:3001/cart")
+    fetch(`${process.env.REACT_APP_API_URL}/cart`)
       .then(res => res.json())
       .then(data => setCartItems(data))
       .catch(err => console.error("Lỗi tải giỏ hàng:", err));
   }, []);
 
   const removeItem = (id) => {
-    fetch(`http://localhost:3001/cart/${id}`, { method: "DELETE" })
+    fetch(`${process.env.REACT_APP_API_URL}/cart/${id}`, { method: "DELETE" })
       .then(() => setCartItems(items => items.filter(item => item.id !== id)))
       .catch(err => console.error(err));
   };

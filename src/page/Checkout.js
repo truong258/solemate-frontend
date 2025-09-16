@@ -19,7 +19,7 @@ function Checkout() {
     e.preventDefault();
     // alert("Xác nhận đơn hàng thành công!");
     try {
-      const res = await fetch('http://localhost:3001/api/checkout', {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/checkout`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
