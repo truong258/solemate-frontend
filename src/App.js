@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {Routes, Route } from 'react-router-dom';
 import Home from './page/Home';
 import ProductDetails from './page/ProductDetails'; // nhớ tạo file này
 import './index.css';
