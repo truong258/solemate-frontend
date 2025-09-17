@@ -65,7 +65,7 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch(`${process.env.REACT_APP_API_URL}//products/${id}`);
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/products/${id}`);
         if (!res.ok) throw new Error("Lỗi khi fetch sản phẩm");
         const data = await res.json();
         setProduct(data);
