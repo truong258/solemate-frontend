@@ -65,7 +65,7 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch(`${process.env.REACT_APP_API_URL}/products/${id}`);
+        const res = await fetch(`${process.env.REACT_APP_API_URL}//products/${id}`);
         if (!res.ok) throw new Error("Lỗi khi fetch sản phẩm");
         const data = await res.json();
         setProduct(data);
@@ -94,10 +94,11 @@ const ProductDetails = () => {
 
   const handleAddToCart = async () => {
     try {
+      console.log("product",product);
       const res = await fetch(`${process.env.REACT_APP_API_URL}/cart`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ product_id: product.id, quantity: 1, price: product.price }),
+        body: JSON.stringify({ product_id: product.id, quantity: 1, price: product.price, product_name: product.name}),
       });
 
       if (!res.ok) throw new Error("Lỗi khi thêm vào giỏ");
