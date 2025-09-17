@@ -101,11 +101,13 @@ function Cart() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}/cart`)
+    fetch(`http://localhost:3001/cart`)
       .then(res => res.json())
       .then(data => setCartItems(data))
       .catch(err => console.error("Lỗi tải giỏ hàng:", err));
   }, []);
+
+
 
   const removeItem = (id) => {
     fetch(`${process.env.REACT_APP_API_URL}/cart/${id}`, { method: "DELETE" })
@@ -143,7 +145,7 @@ function Cart() {
               {cartItems.map(item => (
                 <tr key={item.id} className="border border-gray-300">
                   <td className="p-2">{item.name}</td>
-                  <td className="p-2 text-center">{item.price.toLocaleString()}₫</td>
+                  <td className="p-2 text-center">{item.price}₫</td>
                   <td className="p-2 text-center">{item.quantity}</td>
                   <td className="p-2 text-center">
                     <button
