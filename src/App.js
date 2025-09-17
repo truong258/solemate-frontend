@@ -1,15 +1,15 @@
 import React from 'react';
-import {Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Home from './page/Home';
-import ProductDetails from './page/ProductDetails'; // nhớ tạo file này
-import './index.css';
+import ProductDetails from './page/ProductDetails';
 import Cart from './page/Cart';
 import Checkout from './page/Checkout';
 import Login from './page/Login';
 import UserProfile from './page/UserProfile';
 import { AuthProvider } from './AuthContext';
-import ProtectedRoute   from './components/ProtectedRoute';
+import ProtectedRoute from './components/ProtectedRoute'; 
 import Register from './page/Register';
+import './index.css';
 
 function App() {
   return (
@@ -18,12 +18,16 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
-    </Routes>
-  </AuthProvider>
+
+        {/* Protected Routes (all children of this route are protected) */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/profile" element={<UserProfile />} />
+        </Route>
+      </Routes>
+    </AuthProvider>
   );
 }
 

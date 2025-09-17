@@ -1,36 +1,16 @@
-import React from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../AuthContext';
 
-// function ProtectedRoute({ children }) {
-//   const { isAuthenticated } = useContext(AuthContext);
+const ProtectedRoute = () => {
+  const { user } = useAuth(); // Assume useAuth provides user data
 
-//   if (!isAuthenticated) {
-//     // Nếu chưa đăng nhập, chuyển hướng về trang login
-//     return <Navigate to="/login" replace />;
-//   }
-
-//   // Nếu đã đăng nhập thì render component con
-//   return children;
-// }
-
-// export default ProtectedRoute;
-
-// import React from 'react';
-// import { Navigate } from 'react-router-dom';
-// import { useAuth } from '../AuthContext';
-
-function ProtectedRoute({ children }) {
-  const { user } = useAuth();
-
-  if (!user) {
-    // Nếu chưa đăng nhập, chuyển hướng về trang login
-    return <Navigate to="/login" replace />;
+  // If user is authenticated, render the child routes
+  if (user) {
+    return <Outlet />;
   }
 
-  // Nếu đã đăng nhập thì render component con
-  return children;
-}
+  // If not authenticated, redirect to the login page
+  return <Navigate to="/" replace />;
+};
 
 export default ProtectedRoute;
-
