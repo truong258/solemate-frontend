@@ -144,7 +144,7 @@ function Cart() {
             <tbody>
               {cartItems.map(item => (
                 <tr key={item.id} className="border border-gray-300">
-                  <td className="p-2">{item.name}</td>
+                  <td className="p-2">{item.product_name}</td>
                   <td className="p-2 text-center">{item.price}₫</td>
                   <td className="p-2 text-center">{item.quantity}</td>
                   <td className="p-2 text-center">
