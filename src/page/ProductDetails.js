@@ -65,7 +65,7 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch(`http://localhost:3001/products/${id}`);
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/products/${id}`);
         if (!res.ok) throw new Error("Lỗi khi fetch sản phẩm");
         const data = await res.json();
         setProduct(data);
@@ -94,7 +94,7 @@ const ProductDetails = () => {
 
   const handleAddToCart = async () => {
     try {
-      const res = await fetch(`/cart`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/cart`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ product_id: product.id, quantity: 1, price: product.price }),
