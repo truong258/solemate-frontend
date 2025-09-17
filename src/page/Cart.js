@@ -95,10 +95,12 @@
 
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../AuthContext';
 
 function Cart() {
   const [cartItems, setCartItems] = useState([]);
   const navigate = useNavigate();
+   const { user } = useAuth();
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}/cart`)
@@ -122,7 +124,11 @@ function Cart() {
       alert("Giỏ hàng đang trống!");
       return;
     }
+    if (user) {
     navigate('/checkout');
+    }else {
+      navigate('/login'); 
+    }
   };
 
   return (
