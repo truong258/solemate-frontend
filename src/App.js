@@ -10,12 +10,14 @@ import { AuthProvider } from './AuthContext';
 import ProtectedRoute from './components/ProtectedRoute'; 
 import Register from './page/Register';
 import './index.css';
+ import AddProduct from './page/AddProduct';
 
 function App() {
   return (
     <AuthProvider>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/add-product" element={<AddProduct />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
