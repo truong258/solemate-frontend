@@ -41,7 +41,7 @@ const AddProduct = () => {
 
     try {
 
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/products`, {
+      const res = await fetch(`/products`, {
 
         method: 'POST',
 
@@ -78,7 +78,7 @@ const AddProduct = () => {
         <input name="description" placeholder="Description" onChange={handleChange} className="w-full p-2 border rounded" required />
 
         <input name="price" type="number" placeholder="Giá" onChange={handleChange} className="w-full p-2 border rounded" required />
-        <input name="stock" type="number" placeholder="Giá" onChange={handleChange} className="w-full p-2 border rounded" required />
+        <input name="stock" type="number" placeholder="Stock" onChange={handleChange} className="w-full p-2 border rounded" required />
 
         <input name="category" placeholder="Thể loại" onChange={handleChange} className="w-full p-2 border rounded" required />
 
