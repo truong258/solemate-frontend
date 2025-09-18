@@ -14,9 +14,15 @@ function UserProfile() {
     }
   }, [user, navigate]); // user và navigate là dependencies của useEffect
 
-  const handleLogout = () => {
-    logout();
-    // Chúng ta không gọi navigate ở đây nữa
+  const handleLogout = async  () => {
+    try {
+      await fetch(`${process.env.REACT_APP_API_URL}/cart`, { method: 'DELETE' });
+      logout();
+    }
+    catch(err){
+      console.error('Lỗi khi xóa cart:', err);
+      logout();
+    }
   };
 
   return (
