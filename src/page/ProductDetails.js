@@ -46,7 +46,7 @@ const ProductDetails = () => {
       });
 
       if (!res.ok) throw new Error("Lỗi khi thêm vào giỏ");
-      const msg = await res.text();
+      // const msg = await res.text();
       alert("Thêm vào giỏ hảng thành công"); // "Thêm vào giỏ hàng thành công"
     } catch (error) {
       console.error(error);
